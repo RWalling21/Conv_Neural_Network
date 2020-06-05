@@ -6,7 +6,7 @@ import numpy as np
 import pickle
 import time
 
-#TODO 
+# --- TODO ---
 # This section is more about what we need to learn to understand the NN better, and boy do we have a lot
 # How does a ConvNN Learn?
 # What exactly is Kernal Size and why is it important? 
@@ -18,29 +18,34 @@ import time
 # What is Binary Crossentropy?
 # How does the adam optimizer work, and what are other optimizers that might work better
 # Learn more about different conv architectures other than VGG
-# Better understanding of Features and Labels (Very simple)
 # What does the metrics property in the Compile function do
+
+# --- In Progress ---
+
 # Is there a better way to process and store my training data
 
-# --- Variable ---
+# --- Variables ---
 
-X = pickle.load(open("X.pickle", "rb"))
-y = pickle.load(open("y.pickle", "rb"))
+#X = pickle.load(open("X.pickle", "rb"))
+#y = pickle.load(open("y.pickle", "rb"))
 
-X = np.array(X/255.0)
-y = np.array(y)
+#X = np.array(X/255.0)
+#y = np.array(y)
 
-#Makes and runs multiple networks so that we can see which works best
+X = np.load("dogs_vs_cats_photos.npy")
+y = np.load("dogs_vs_cats_labels.npy")
 
-NAME = "VGG-convNN-{}".format(int(time.time())) #Formats the name of the Network to show which is most effective
-tensorboard = TensorBoard(log_dir="logs\\{}".format(NAME))
-print(NAME)
+# --- Model ---
+
+model_Name = "VGG-convNN-{}".format(int(time.time())) #Formats the name of the Network to show which is most effective
+tensorboard = TensorBoard(log_dir="logs\\{}".format(model_Name))
+print(model_Name)
 
 model = Sequential()
 
 # Input Layer
 
-model.add(Conv2D(32, (3,3), activation="relu", input_shape = X.shape[1:])) # Set's up first Conv layer with a kernel size of 3 - 3
+model.add(Conv2D(32, (3,3), activation="relu", input_shape=(75, 75, 1))) # Set's up first Conv layer with a kernel size of 3 - 3
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 # Hidden Layers
