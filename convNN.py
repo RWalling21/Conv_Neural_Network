@@ -8,12 +8,12 @@ import time
 
 # --- TODO ---
 # This section is more about what we need to learn to understand the NN better, and boy do we have a lot
+
 # How does a ConvNN Learn?
 # What exactly is Kernal Size and why is it important? 
 # How does Pooling work
 # What is Input Shape and how is conv shape defined
 # What is Conv2D padding and how can it improve my model
-# What is Dropout and how can it improve my model
 # Why do we use Sigmoid for our Output layer instead of Rectified Linear?
 # What is Binary Crossentropy?
 # How does the adam optimizer work, and what are other optimizers that might work better
@@ -22,18 +22,15 @@ import time
 
 # --- In Progress ---
 
-# Is there a better way to process and store my training data
+# What is Dropout and how can it improve my model
 
 # --- Variables ---
 
-#X = pickle.load(open("X.pickle", "rb"))
-#y = pickle.load(open("y.pickle", "rb"))
+X = pickle.load(open("X.pickle", "rb"))
+y = pickle.load(open("y.pickle", "rb"))
 
-#X = np.array(X/255.0)
-#y = np.array(y)
-
-X = np.load("dogs_vs_cats_photos.npy")
-y = np.load("dogs_vs_cats_labels.npy")
+X = np.array(X/255.0)
+y = np.array(y)
 
 # --- Model ---
 
